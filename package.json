@@ -1,0 +1,20 @@
+{
+  "name": "senestia-playwright-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "mocha": "^11.1.0",
+    "playwright": "^1.51.0"
+  }
+}
