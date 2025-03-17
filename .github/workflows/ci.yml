@@ -11,23 +11,28 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16"
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
 
-      - name: Install dependencies
-        run: |
-          npm install    
-          npm ci
+    - name: Install dependencies
+      run: |
+        npm install
 
-      - name: Install Playwright Browsers
-        run: npx playwright install
+    - name: Install Xvfb
+      run: sudo apt-get install -y xvfb
 
-      - name: Run tests
-        run: npm run test
+    - name: Start Xvfb
+      run: Xvfb :99 -screen 0 1280x1024x24 & export DISPLAY=:99
+
+    - name: Install Playwright Browsers
+      run: npx playwright install
+
+    - name: Run tests
+      run: npm run test

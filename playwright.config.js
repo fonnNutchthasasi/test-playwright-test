@@ -1,17 +1,14 @@
 /** @type { import('@playwright/test').PlaywrightTestConfig } */
 const config = {
-    //workers: process.env.CI ? 1 : undefined,
     use: {
-        headless: false,
+        headless: process.env.CI ? true : false,
         screenshot: 'on',
     },
     reporter: [
-        ['html',
-            {
-                open: 'never',
-                outputFolder: 'testresults'
-            }
-        ]
+        ['html', {
+            open: 'never',
+            outputFolder: 'testresults',
+        }]
     ]
 };
 
