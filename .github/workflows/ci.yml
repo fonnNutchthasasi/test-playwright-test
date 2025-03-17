@@ -1,28 +1,31 @@
-name: CI Workflow for Testing
+name: Node.js CI
 
 on:
   push:
     branches:
-      - main # หรือเลือก branch ที่ต้องการจะทำงานกับ GitHub Actions
+      - main
   pull_request:
     branches:
-      - main # หรือเลือก branch ที่ต้องการจะทำงานกับ GitHub Actions
+      - main
 
 jobs:
   test:
-    runs-on: ubuntu-latest # เลือกระบบปฏิบัติการที่คุณต้องการ เช่น Ubuntu, Windows, macOS
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "18.20.3" 
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
-      - name: Install dependencies
-        run: npm install
+    - name: Install dependencies
+      run: npm install
 
-      - name: Run tests
-        run: npm run test
+    - name: Install Playwright browsers
+      run: npx playwright install
+
+    - name: Run tests
+      run: npm run test
