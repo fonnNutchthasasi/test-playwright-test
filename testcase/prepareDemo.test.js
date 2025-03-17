@@ -12,14 +12,10 @@ test.describe('senestia', () => {
         const username = 'smart_line_sincere@hotmail.com';
         const password = 'pooh0821'
 
-
-
-
-        
         await page.goto(url);
         await loginPage.inputUsername(username);
-        await loginPage.inputPassword('P@ssw0rd');
-        await loginPage.clickLoginButton(password);
+        await loginPage.inputPassword(password);
+        await loginPage.clickLoginButton();
     });
 
     test.afterAll(async () => {
